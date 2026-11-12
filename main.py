@@ -1,9 +1,11 @@
 import os 
+# Импорт защита ключ
 from dotenv import load_dotenv
 from gigachat import GigaChat 
 from prompts import SYSTEM_PROMPT
 from gigachat.models import ChatCompletionRequest, ChatMessage, ChatModelOptions
 
+# Загруж ключ из скрытог файл в систем
 load_dotenv()
 key = os.getenv("GIGACHAT_CREDENTIALS")
 scope = os.getenv("GIGACHAT_SCOPE")
@@ -12,11 +14,11 @@ print("=== Чат-помощник по бюджету ===")
 print("Доступные команды: 'выход', 'очистить', 'история'")
 print("Для начала просто напишите ваш доход и цель.\n")
 
-# Задание 18, 19: Метка нового запуска в журнале
+#chat_history.txt в режиме "a" (дописывать в конец), encoding="utf-8" русского
 with open("chat_history.txt", "a", encoding="utf-8") as f:
     f.write("\n=== Новый запуск ===\n")
 
-# Задание 10: Создаем messages ДО цикла (только system)
+# сохран истории
 messages = [
     ChatMessage(role="system", content=SYSTEM_PROMPT)
 ]
