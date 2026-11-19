@@ -1,0 +1,5 @@
+gigachat
+python-dotenv
+pydantic
+scikit-learn
+numpy
